@@ -3,7 +3,7 @@ import { useSearchParams } from "next/navigation";
 import { api } from "@/utils/api";
 import { useCallback, useEffect, useRef } from "react";
 import toast from "react-hot-toast";
-
+import { CategorySkeleton } from "./skeletons";
 export const PaginatedCard: React.FC<{}> = ({}) => {
   const checkboxes = useRef<Array<HTMLInputElement | null>>([]);
   const searchParams = useSearchParams();
@@ -69,30 +69,41 @@ export const PaginatedCard: React.FC<{}> = ({}) => {
       <div className="flex w-[100%] flex-col gap-[20px]">
         <h3>My saved interests!</h3>
         <div className="flex w-[100%] flex-col gap-[10px]">
-          {categoriesData?.categories.map((category) => {
-            return (
-              <div key={category.id} className="main">
-                <input
-                  ref={(e) => {
-                    checkboxes.current?.push(e);
-                  }}
-                  id={category.id}
-                  name={category.id}
-                  type="checkbox"
-                />
-                <span
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleChange(category.id);
-                    mutate({ id: category.id });
-                  }}
-                  ref={(e) => {}}
-                  className="checkbox-container"
-                ></span>
-                <label htmlFor={category.id}>{category.name}</label>
-              </div>
-            );
-          })}
+          {categoriesData ? (
+            categoriesData?.categories.map((category) => {
+              return (
+                <div key={category.id} className="main">
+                  <input
+                    ref={(e) => {
+                      checkboxes.current?.push(e);
+                    }}
+                    id={category.id}
+                    name={category.id}
+                    type="checkbox"
+                  />
+                  <span
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleChange(category.id);
+                      mutate({ id: category.id });
+                    }}
+                    ref={(e) => {}}
+                    className="checkbox-container"
+                  ></span>
+                  <label htmlFor={category.id}>{category.name}</label>
+                </div>
+              );
+            })
+          ) : (
+            <div className="flex flex-col gap-[25px]">
+              <CategorySkeleton />
+              <CategorySkeleton />
+              <CategorySkeleton />
+              <CategorySkeleton />
+              <CategorySkeleton />
+              <CategorySkeleton />
+            </div>
+          )}
         </div>
       </div>
 

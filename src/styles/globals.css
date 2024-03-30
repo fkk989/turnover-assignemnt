@@ -50,3 +50,12 @@
 .main input:checked ~ .checkbox-container::after {
   display: block;
 }
+
+@keyframes shimmer {
+  0% {
+    background-position: -450px 0;
+  }
+  100% {
+    background-position: 450px 0;
+  }
+}
