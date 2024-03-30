@@ -88,12 +88,17 @@ export default function SignupPage() {
 
   const { mutate: createUser } = api.user.create.useMutation({
     onSuccess: () => {
-      toast.success("email verified", { id: "verifying-token" });
+      toast.success("Signed up successfully", { id: "verifying-token" });
       setDisableBtn(false);
       utils.user.getUser.invalidate();
       router.refresh();
     },
-    onError: () => {},
+    onError: () => {
+      // since all the error are handled so it will be just a server error
+      toast.success("server error please try again later", {
+        id: "verifying-token",
+      });
+    },
   });
 
   //  send verification email
