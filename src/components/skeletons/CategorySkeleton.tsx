@@ -8,7 +8,7 @@ export const CategorySkeleton = () => {
         style={{
           backgroundImage:
             "linear-gradient(to right, #d9d9d9 0%, rgba(0,0,0,0.05) 20%, #d9d9d9 40%, #d9d9d9 100%)",
-          animation: "shimmer 5s linear infinite;",
+          animation: "shimmer 5s linear infinite",
         }}
       ></div>
     </div>
