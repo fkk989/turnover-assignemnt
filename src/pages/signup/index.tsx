@@ -88,7 +88,7 @@ export default function SignupPage() {
 
   const { mutate: createUser } = api.user.create.useMutation({
     onSuccess: () => {
-      toast.success("Success", { id: "verifying-token" });
+      toast.success("email verified", { id: "verifying-token" });
       setDisableBtn(false);
       utils.user.getUser.invalidate();
       router.refresh();
@@ -111,7 +111,6 @@ export default function SignupPage() {
   // token verification
   const { mutate: verifytoken } = api.userVerification.verifyToken.useMutation({
     onSuccess: () => {
-      toast.loading("email verified", { id: "verifying-token" });
       createUser({ name, email, password });
     },
     onError: (e) => {
