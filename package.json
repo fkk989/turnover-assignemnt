@@ -16,7 +16,6 @@
     "seed": "node prisma/seed.js"
   },
   "dependencies": {
-    "@next/swc-darwin-arm64": "^14.2.3",
     "@prisma/client": "^5.10.2",
     "@t3-oss/env-nextjs": "^0.9.2",
     "@tanstack/react-query": "^5.25.0",
