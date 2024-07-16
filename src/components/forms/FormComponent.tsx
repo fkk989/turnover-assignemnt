@@ -149,10 +149,14 @@ export const FormComponent: React.FC<Prop> = ({
             onClick={handleSubmit}
             className={
               buttonStyle ??
-              "h-[56px] w-[456px] rounded-[6px] bg-black text-center uppercase tracking-[1px] text-white"
+              "flex h-[56px] w-[456px] items-center justify-center rounded-[6px] bg-black text-center uppercase tracking-[1px] text-white"
             }
           >
-            {buttonText}
+            {disableBtn ? (
+              <div className="h-[35px] w-[35px] animate-spin rounded-full border-[1px] border-r-0 border-white"></div>
+            ) : (
+              buttonText
+            )}
           </button>
           <div className="h-[1px] w-[456px] bg-[#C1C1C1]"></div>
           <div>{RedirectComponent}</div>
